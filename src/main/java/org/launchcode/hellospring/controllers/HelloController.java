@@ -26,7 +26,7 @@ public class HelloController {
 
 //    @GetMapping("hello")     // USE this for GET request methods if don't need both (things default to GET if not stated)
 
-    @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST}, value = "hello") // Use this for different request types
+    @RequestMapping(value = "hello", method = {RequestMethod.GET, RequestMethod.POST}) // Use this for different request types
     @ResponseBody
     public String helloWithQueryParam(@RequestParam String name) {
         return "Hello, " + name + "!";
@@ -44,22 +44,22 @@ public class HelloController {
 //    public String helloForm() {
 //        return "<html>" +
 //                "<body>" +
-//                "<form action='hello'>" +   // submit a default GET request to /hello w/ no method= declared.
-//                "<input type='text' name='name'>" +
-//                "<input type='submit' value='Greet me!'>" +
+//                "<form method = 'get' action = 'hello'>" +  // submits GET request to /hello (default is GET if <method=> omitted)
+//                "<input type = 'text' name = 'name'/>" +
+//                "<input type = 'submit' value = 'Greet me!'/>" +
 //                "</form>" +
 //                "</body>" +
 //                "</html";
 //    }
 
-    @GetMapping("form")
+    @GetMapping("form")  // ("form") requires you put <localhost:8080/form> If no ("form"), path defaults to / root <localhost:8080>
     @ResponseBody
     public String helloForm() {
         return "<html>" +
                 "<body>" +
-                "<form action='hello' method='post'>" +   // submit a POST request to /hello by adding method='post'
-                "<input type='text' name='name'>" +
-                "<input type='submit' value='Greet me!'>" +
+                "<form method = 'post' action = 'hello'>" +   // submit a POST request to /hello by adding method='post'
+                "<input type = 'text' name = 'name'/>" +
+                "<input type = 'submit' value = 'Greet me!'/>" +
                 "</form>" +
                 "</body>" +
                 "</html";
