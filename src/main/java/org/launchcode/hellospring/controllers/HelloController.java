@@ -14,12 +14,12 @@ public class HelloController {
 //        return "Hello, Spring!";
 //    }
 
-    // Handles request at path </goodbye>
-    @GetMapping("goodbye")
-    @ResponseBody
-    public String goodbye( ) {
-        return "Goodbye, Spring!";
-    }
+    // Handles request at path </goodbye>     Turned off b/c not needed for this practice video.
+//    @GetMapping("goodbye")
+//    @ResponseBody
+//    public String goodbye( ) {
+//        return "Goodbye, Spring!";
+//    }
 
     // Handles request of the form /hello?name=LaunchCode
     // Must comment off lines 13-17 above to work here b/c cannot have 2 different controllers at same path ("hello")
@@ -39,29 +39,10 @@ public class HelloController {
         return "Hello, " + name + "!";
     }
 
-//    @GetMapping("form")
-//    @ResponseBody
-//    public String helloForm() {
-//        return "<html>" +
-//                "<body>" +
-//                "<form method = 'get' action = 'hello'>" +  // submits GET request to /hello (default is GET if <method=> omitted)
-//                "<input type = 'text' name = 'name'/>" +
-//                "<input type = 'submit' value = 'Greet me!'/>" +
-//                "</form>" +
-//                "</body>" +
-//                "</html";
-//    }
-
+    // Handles request at /form  (or rather at localhost:8080/form)
     @GetMapping("form")  // ("form") requires you put <localhost:8080/form> If no ("form"), path defaults to / root <localhost:8080>
-    @ResponseBody
+//    @ResponseBody     // Do not need this when you use templates! It will ASSUME you want
     public String helloForm() {
-        return "<html>" +
-                "<body>" +
-                "<form method = 'post' action = 'hello'>" +   // submit a POST request to /hello by adding method='post'
-                "<input type = 'text' name = 'name'/>" +
-                "<input type = 'submit' value = 'Greet me!'/>" +
-                "</form>" +
-                "</body>" +
-                "</html";
+        return "form";  //  the name of the form.html template file to tell it where to go to find the form html info.
     }
 }
